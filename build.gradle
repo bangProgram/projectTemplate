@@ -1,0 +1,49 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.2'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.tvod-test'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+//	사용 DB 의존성 추가
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	runtimeOnly 'com.h2database:h2'
+
+//	타임리프 live Reload 추가
+	compileOnly "org.springframework.boot:spring-boot-devtools"
+
+//	스프링 security 추가
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
