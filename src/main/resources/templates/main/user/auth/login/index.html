@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<script>
+
+
+    function submitForm() {
+        document.getElementById("email").;
+    }
+
+</script>
+
+<body>
+<h1>
+    로그인 화면
+</h1>
+    <form action="#" th:action="@{/signup}" th:method="post">
+        <table>
+            <tr>
+                <td>Email : </td>
+                <td>
+                    <label><input type="text" id="email" th:name="email"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>PW : </td>
+                <td>
+                    <label><input type="password" id="password" th:name="password"></label>
+                </td>
+            </tr>
+        </table>
+        <button onclick="submitForm()">
+            email 확인
+        </button>
+        <button onclick="whoami(document.getElementById('password'))">
+            password 확인
+        </button>
+    </form>
+</body>
+</html>
